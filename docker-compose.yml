@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - 8080:80
+    volumes:
+      - ./www:/var/www:cached
+
+  php-fpm:
+    build:
+      context: ./php-fpm
+    volumes:
+      - ./www:/var/www:cached
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: password
+    ports:
+      - '33060:3306'
