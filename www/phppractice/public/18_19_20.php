@@ -3,6 +3,7 @@
 // 継承
 // overrideさせたくないよってときはfinalをprefixでつけてあげる
 // Fatal error: Cannot override final method User::sayHi() in 
+// 
 
 // class名は頭文字が大文字
 
