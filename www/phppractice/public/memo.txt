@@ -93,3 +93,13 @@ insert into users (id, name, score) values
   (1, 'taguchi', 5.8),
   (2, 'fkoji', 2.0);
 これは一緒である。
+
+primary key auto_increment
+は識別できる一意な値であることとauto_incrementで自動で値が増加して行くことを意味する
+なのでIDとかにこれがあればinsertの時に指定しなくても作成され増えていく
+not null 制約は
+score float not null
+と書く
+score float default 0.0
+これでdefaultを指定できる.
+
