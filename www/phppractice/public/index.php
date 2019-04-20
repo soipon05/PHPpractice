@@ -1,23 +1,18 @@
 <?php
 
-// interface
-// 必ず実装してもらうことを保証する
-// 性質上必ずpublicでなければいけない
+// require: fatal errorを発生させて処理を中断させる
+// require_once
 
-interface sayHi {
-  public function sayHi();
-}
+// require "User.class.php";
 
-interface sayHello {
-  public function sayHello();
-}
+// include: warningを発生させて処理を続行
+// include_once
 
-class User implementss sayHi, sayHello {
-  public function sayHi() {
-    echo "Hi";
-  }
+// autoload
 
-  public function sayHello() {
-    echo "Hello";
-  }
-}
+spl_autoload_register(function($class){
+  require $class . ".class.php";
+});
+
+$bob = new User("Bob");
+$bob->sayHi();

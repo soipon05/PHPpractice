@@ -12,7 +12,7 @@ interface sayHello {
   public function sayHello();
 }
 
-class User implementss sayHi, sayHello {
+class User implements sayHi, sayHello {
   public function sayHi() {
     echo "Hi";
   }
