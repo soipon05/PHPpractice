@@ -19,7 +19,4 @@ $sales = [
 
 var_dump($sales["fkoji"]); //800
 $sales["fkoji"] = 900;
-var_dump($sales["fkoji"]); //900
-
-$colors = ["red", "blue", "pink"];
-var_dump($colors[1]); //blue
+var_dump($sales["fkojia"]); //900
