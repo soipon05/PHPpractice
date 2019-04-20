@@ -5,15 +5,17 @@ create table users (
   -- score float not null
   score float default 0.0
 );
+-- alter table users add column email varchar(255);
+alter table users add column email varchar(255) after name;
+-- こうするとnameの後に挿入される
+-- カラム削除はdrop column カラム名;
+alter table users drop column score;
+-- データ型を変更したい時は alter table users changeを使えばOK
+alter table users name user_name varchar(80) default 'nobody';
+
 desc users;
 
-insert into users (name, score) values ('taguchi', 5.8);
-insert into users (name, score) vaules ('fkoji', 8.2);
-
--- insert into users (id, name, score) values (1, 'taguchi', 5.8);
--- insert into users (id, name, score) values (2, 'fkoji', 8.2);
--- insert into users (id, name, score) values (3, 'dotinstall', 6.1);
--- insert into users (id, name, score) values (4, 'yamada', null);
--- insert into users (id, name, score) values (5, 'tanaka');
-
-select * from users;
+-- テーブル名の変更
+alter table users rename persons;
+show tables;
+drop table if exists persons;
