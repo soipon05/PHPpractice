@@ -1,0 +1,38 @@
+Mysqlの学習用memo
+dockerにて学習しているので
+docker exec -it ~~~ bash 
+(~~~はNAME)
+これでmysqlのコンテナに接続して、
+mysql -u [User] -p
+これでパスワードを正しく打てばmysqlに接続できる
+mysql>
+このような表示になっていればOK
+Ctrl + l で画面クリアができる
+テーブルの行のことをrecord/rowという
+列のことをField/Columnという
+create database hoge;
+これでhogeというdbが作成できる
+drop database hoge;
+これでhogeというdbを削除できる
+use hoge;
+これでhogeというdbを選択状態になる
+作業用ユーザーを作成する
+create user dbuser@localhost identified by 'pass';
+-u dbuser -p
+pass
+というユーザーが作成できる
+
+grant all on mydb01.* to dbuser@localhost;
+dbuserに対して、mydb01の全テーブルの全権限を付与するという実行文
+
+rootの接続からexitで抜けて
+mysql -u dbuser -p mydb01
+mydb01を末尾に指定することでuse mydb01の手間を省く
+show databases;
+を実行するとアクセス権限のあるmydb01のみ表示される
+
+【Userとdb削除】
+削除はroot権限でしかできないのでrootで入り直す
+drop database mydb01;
+drop user dbuser@localhost;
+これで削除ができる
