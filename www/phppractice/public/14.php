@@ -21,7 +21,6 @@ $colors = ["red", "blue", "pink"];
 
 // foreach if while for コロン構文
 // HTMLに埋め込むときにスッキリして見やすいとのこと
-// {}括弧を使うとちょっと見づらいので
 foreach ($colors as $value) :
   echo "$value";
 endforeach;
