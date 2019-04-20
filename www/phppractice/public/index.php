@@ -1,22 +1,22 @@
 <?php
 
-// switch 条件分岐
+// ループ処理
+// while
+// do ... while
 
-$signal = "red";
+// do ... while は後処理なので条件に当てはまらなくても一回は中の式を実行する
+// $i = 1000;
+// このとき
+// whileは何も表示されない
+// do...while は1000を表示する
+$i = 0;
 
-switch ($signal) {
-  case "red":
-    echo "stop";
-    break;
-    // 複数条件も並べて書くことができる
-  case "blue":
-  case "green":
-    echo "go";
-    break;
-  case "yellow":
-    echo "caution!";
-    break;
-  default:
-    echo "wrong signal";
-    break;
-}
+// while ($i < 10) {
+//   echo $i;
+//   $ii++;
+// }
+
+do {
+  echo $i;
+  $i++;
+} while ($i < 11);
