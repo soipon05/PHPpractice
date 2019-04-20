@@ -1,18 +1,12 @@
 <?php
 
-// require: fatal errorを発生させて処理を中断させる
-// require_once
+// 名前空間を使用
+require "User.class.php";
 
-// require "User.class.php";
+// use Dotinstall\Lib as Lib;
+use Dotinstall\Lib;
+// これだけでも最下層の名前を使えってことになる
 
-// include: warningを発生させて処理を続行
-// include_once
 
-// autoload
-
-spl_autoload_register(function($class){
-  require $class . ".class.php";
-});
-
-$bob = new User("Bob");
+$bob = new Lib\User("Bob");
 $bob->sayHi();
