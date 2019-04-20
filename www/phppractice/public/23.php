@@ -8,7 +8,6 @@ abstract class BaseUser {
   // 継承先で必ず実装してほしいことを明記するときは
   // abstractをprefixにつける。
   // 実装することを書くので実装内容はここでは書かない。
-  // 継承先で実装内容をかくこと
   abstract public function sayHi();
 }
 
