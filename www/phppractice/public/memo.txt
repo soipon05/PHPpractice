@@ -36,3 +36,60 @@ show databases;
 drop database mydb01;
 drop user dbuser@localhost;
 これで削除ができる
+
+外部ファイルの読み込み
+create_myapp.sqlを作成する
+
+drop database if exists myapp;
+create database myapp;
+grant all on myapp.* to myapp_user@localhost identified by 'password';
+create userをしなくても権限と一緒にUserを作成できる
+接続するときに
+mysql -u root < create_myapp.sql
+のように流し込んであげる
+mysql -u myapp_user -p myapp
+で接続できる
+create table users (
+  id int unsigned,
+  name varchar(20),
+  score float
+);
+これを流し込んだらtableが作成され
+show tables;
+これでテーブル一覧を確認できる
+テーブル構造を見たいときは
+desc users;
+description usersってことらしい
+drop table users;
+で削除できる
+
+Mysqlが扱えるデータ型
+number:
+- int (整数)
+- float (浮動小数点数）
+- double (floatより精度の高いやつ)
+- int unsigned (unsignedをつけるとマイナスも使用できる)
+
+string:
+- char (固定長)
+− varchar(255) (可変長)
+− text         (可変長,文字数がどれぐらいになるかわからない時はこれを使う)
+
+data/time:
+- data (日付)
+- time (時間)
+- datatime '2019-04-20 18:00:00'
+
+true/false
+- boolean -> tinyint(1)  (booleanは一桁の整数の別名)
+内部的には
+  true  -> 1
+  false -> 0
+
+insert into users (id, name, score) values (1, 'taguchi', 5.8);
+insert into users (id, name, score) values (2, 'fkoji', 2.0);
+こう書くのと
+insert into users (id, name, score) values 
+  (1, 'taguchi', 5.8),
+  (2, 'fkoji', 2.0);
+これは一緒である。
