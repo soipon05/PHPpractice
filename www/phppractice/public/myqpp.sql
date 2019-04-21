@@ -13,17 +13,16 @@ insert into users (name, score) values ('Tanaka', 4.2);
 insert into users (name, score) values ('yamada', null);
 insert into users (name, score) values ('tashiro', 7.9);
 
--- select * from users;
-select id, name from users;
--- < > <= >= = <> != (<> !=同じ意味)
--- is null, is not null
--- and or not
--- where に使える条件文
--- select * from users where score >= 6.0;
--- select * from users where score >= 3.0 and score <= 6.0;
--- select * from users where score between 3.0 and 6.0;
--- どちらも同じ意味である
-
--- select * from users where name = 'taguchi' or name = 'fkoji';
--- select * from users where name in ('taguchi', 'fkoji');
--- これも同じ意味 nameがtaguchiさんかfkojiさんをさがしてきてってこと
+-- 文字列抽出
+-- ％は0文字以上の任意の文字列という意味のワイルドカード
+-- select * from users where name = 'taguchi';
+-- tから始まるって書く時はt%
+-- select * from users where name like 't%';
+-- aが含まれるというときは%a%とする
+-- select * from users where name like '%a%';
+-- aで終わるときは%aとする
+-- sqlは大文字小文字を区別しないが厳密に区別してほしい時は、binaryをつける
+-- select * from users where name like binary 'T%';
+-- 文字数で抽出したいときはアンダーバーで表示するex.6文字,2文字目がaである。
+-- select * from users where name like '______';
+-- select * from users where name like '_a%';
