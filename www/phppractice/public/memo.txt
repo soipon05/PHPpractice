@@ -103,3 +103,73 @@ score float not null
 score float default 0.0
 これでdefaultを指定できる.
 
+並び替え
+order by
+limit 
+offset
+
+select * from users order by score;
+小さい順になる
+select * from users where score is not null order by score desc;
+
+IDの上から3つを抽出する
+select * from users limit 3;
+
+offsetは除外なので、最初の3つは飛ばしてその後の3つを抽出する
+select * from users limit 3 offset 3;
+
+select * from users order by score desc  limit 3;
+usersテーブルからスコアを抽出してそれを降順で３つ抽出する抽出した
+
+・レコードの更新、削除
+update
+delete
+
+update users set score = 5.9;(全員のスコアが5.9になる)
+update users set score = 5.9 where id = 1;(id=1のscoreを5.9に更新する)
+update users set name = 'sasaki', score = 2.9 where name = 'tanaka';
+(name -> sasaki , score -> 2.9に変更する)
+delete from users where score < 5.0;
+scoreが5.0以下のレコードを削除する。
+nullは削除されません。
+
+
+・数値の演算をする
+演算子
+組み込み関数
+
+
+四則演算は通常通りできる
+
+update users set score = score  * 1.2 where id % 2 = 0;
+idが偶数のユーザーのスコアを1.2倍にする
+
+select round(5.355); 5
+select round(5.355, 1); 5.4
+select floor(5.83); 5
+select ceil(5.238); 6
+select rand();乱数を出す
+
+select * from users order by rand() limit 1;
+乱数で並び替えてそのうちから1つだけ抽出する実行文
+
+
+
+・文字列の演算
+文字列に関する組み込み関数
+as
+
+select length('Hello'); --5
+
+select substr('Hello', 2); -- ello
+select substr('Hello', 2, 3); --ell
+select upper('Hello'); --HELLO
+select lower('Hello'); --hello
+select concat('hello', 'world'); --helloworld
+
+
+select length(name), name form users order by length(name);
+名前の文字数と名前をusersテーブルから抽出してそれをlength(name)の昇順に並び替える.
+
+select length(name) as len, name from users order by len;
+asは言い換えみたいな感じで冗長なのを短く読みやすい文字に変えたりするときに使う。カラム名も変わる
